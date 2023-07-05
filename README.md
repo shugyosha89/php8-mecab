@@ -1,20 +1,27 @@
-php-mecab: MeCab binding for PHP
-================================
+php-mecab: MeCab binding for PHP 8.1
+====================================
 
+ABOUT
+-----
+
+I have updated this extension work without warnings and deprecation notices on PHP 8.1.
 
 INSTALL
 -------
 
-To compile your new extension, you will have to execute the following steps:
+To compile the extension, you can use the following steps:
 
-1. `phpize`
-2. `./configure`
-    * You cah specify mecab `--with-mecab=/path/to/mecab-config`.
-    * For developers: `CFLAGS="-Wall -Wextra -Wno-unused-parameter" ./configure`
-3. `make`
-4. `make test`
-5. `[sudo] make install`
+1. `git clone https://github.com/shugyosha89/php8-mecab.git`
+2. `cd ./php8-mecab/mecab`
+3. `phpize`
+4. `./configure --with-php-config=/usr/local/bin/php-config --with-mecab=/usr/local/bin/mecab-config` (config parameters are optional)
+5. `make`
+6. `make install`
 
+In order to use it, you will have to enable the extension.
+For example by adding `extension=mecab.so` to your php.ini file.
+
+To understand how to use the MeCab bindings, see the `mecab/examples` directory.
 
 LICENSE
 -------
