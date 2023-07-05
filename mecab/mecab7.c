@@ -376,6 +376,9 @@ static zend_function_entry mecab_methods[] = {
 #define PM_NODE_ME_MAPPING(methname, funcname) \
 	PHP_ME_MAPPING(methname, mecab_node_ ## funcname, arginfo_void, ZEND_ACC_PUBLIC)
 
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_getIterator, 0, 0, Traversable, 0)
+ZEND_END_ARG_INFO()
+
 static zend_function_entry mecab_node_methods[] = {
 	/* Constructor */
 	PHP_ME(MeCab_Node, __construct, arginfo_void, ZEND_ACC_PRIVATE | ZEND_ACC_CTOR)
@@ -383,7 +386,7 @@ static zend_function_entry mecab_node_methods[] = {
 	PHP_ME(MeCab_Node, __get,   arginfo_mecab__magic_getter, ZEND_ACC_PUBLIC)
 	PHP_ME(MeCab_Node, __isset, arginfo_mecab__magic_getter, ZEND_ACC_PUBLIC)
 	/* IteratorAggregate implementations */
-	PHP_ME(MeCab_Node, getIterator, arginfo_void, ZEND_ACC_PUBLIC)
+	PHP_ME(MeCab_Node, getIterator, arginfo_getIterator, ZEND_ACC_PUBLIC)
 	PHP_ME(MeCab_Node, setTraverse, arginfo_mecab_node_settraverse, ZEND_ACC_PUBLIC)
 	/* Dumper */
 	PHP_ME_MAPPING(toArray, mecab_node_toarray, arginfo_mecab_node_toarray_m, ZEND_ACC_PUBLIC)
@@ -416,16 +419,31 @@ static zend_function_entry mecab_node_methods[] = {
 };
 /* }}} */
 
+ZEND_BEGIN_ARG_WITH_TENTATIVE_RETURN_TYPE_INFO_EX(arginfo_current, 0, 0, IS_MIXED, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_TENTATIVE_RETURN_TYPE_INFO_EX(arginfo_key, 0, 0, IS_MIXED, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_TENTATIVE_RETURN_TYPE_INFO_EX(arginfo_next, 0, 0, IS_VOID, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_TENTATIVE_RETURN_TYPE_INFO_EX(arginfo_rewind, 0, 0, IS_VOID, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_TENTATIVE_RETURN_TYPE_INFO_EX(arginfo_valid, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
 /* {{{ MeCab_NodeIterator methods[] */
 static zend_function_entry mecab_iterator_methods[] = {
 	/* Constructor */
 	PHP_ME(MeCab_NodeIterator, __construct, arginfo_void, ZEND_ACC_PRIVATE | ZEND_ACC_CTOR)
 	/* Iterator implementations */
-	PHP_ME(MeCab_NodeIterator,  current,    arginfo_void, ZEND_ACC_PUBLIC)
-	PHP_ME(MeCab_NodeIterator,  key,        arginfo_void, ZEND_ACC_PUBLIC)
-	PHP_ME(MeCab_NodeIterator,  next,       arginfo_void, ZEND_ACC_PUBLIC)
-	PHP_ME(MeCab_NodeIterator,  rewind,     arginfo_void, ZEND_ACC_PUBLIC)
-	PHP_ME(MeCab_NodeIterator,  valid,      arginfo_void, ZEND_ACC_PUBLIC)
+	PHP_ME(MeCab_NodeIterator,  current,    arginfo_current,	ZEND_ACC_PUBLIC)
+	PHP_ME(MeCab_NodeIterator,  key,        arginfo_key, 		ZEND_ACC_PUBLIC)
+	PHP_ME(MeCab_NodeIterator,  next,       arginfo_next, 		ZEND_ACC_PUBLIC)
+	PHP_ME(MeCab_NodeIterator,  rewind,     arginfo_rewind, 	ZEND_ACC_PUBLIC)
+	PHP_ME(MeCab_NodeIterator,  valid,      arginfo_valid, 		ZEND_ACC_PUBLIC)
 	PHP_FE_END
 };
 /* }}} */
