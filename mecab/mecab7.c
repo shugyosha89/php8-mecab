@@ -341,7 +341,7 @@ ZEND_END_ARG_INFO()
 /* {{{ MeCab\Tagger methods[] */
 
 #define PM_TAGGER_ME_MAPPING(methname, funcname) \
-       PHP_ME_MAPPING(methname, mecab_ ## funcname, NULL, ZEND_ACC_PUBLIC)
+       PHP_ME_MAPPING(methname, mecab_ ## funcname, arginfo_void, ZEND_ACC_PUBLIC)
 #define PM_TAGGER_ME_MAPPING_EX(methname, funcname) \
 	PHP_ME_MAPPING(methname, mecab_ ## funcname, arginfo_mecab_ ## funcname ## _m, ZEND_ACC_PUBLIC)
 
@@ -371,16 +371,16 @@ static zend_function_entry mecab_methods[] = {
 
 /* {{{ MeCab\Node methods[] */
 #define PM_NODE_ME_MAPPING(methname, funcname) \
-	PHP_ME_MAPPING(methname, mecab_node_ ## funcname, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME_MAPPING(methname, mecab_node_ ## funcname, arginfo_void, ZEND_ACC_PUBLIC)
 
 static zend_function_entry mecab_node_methods[] = {
 	/* Constructor */
-	PHP_ME(MeCab_Node, __construct, NULL, ZEND_ACC_PRIVATE | ZEND_ACC_CTOR)
+	PHP_ME(MeCab_Node, __construct, arginfo_void, ZEND_ACC_PRIVATE | ZEND_ACC_CTOR)
 	/* Overloading implementations */
 	PHP_ME(MeCab_Node, __get,   arginfo_mecab__magic_getter, ZEND_ACC_PUBLIC)
 	PHP_ME(MeCab_Node, __isset, arginfo_mecab__magic_getter, ZEND_ACC_PUBLIC)
 	/* IteratorAggregate implementations */
-	PHP_ME(MeCab_Node, getIterator, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(MeCab_Node, getIterator, arginfo_void, ZEND_ACC_PUBLIC)
 	PHP_ME(MeCab_Node, setTraverse, arginfo_mecab_node_settraverse, ZEND_ACC_PUBLIC)
 	/* Dumper */
 	PHP_ME_MAPPING(toArray, mecab_node_toarray, arginfo_mecab_node_toarray_m, ZEND_ACC_PUBLIC)
@@ -416,24 +416,24 @@ static zend_function_entry mecab_node_methods[] = {
 /* {{{ MeCab_NodeIterator methods[] */
 static zend_function_entry mecab_iterator_methods[] = {
 	/* Constructor */
-	PHP_ME(MeCab_NodeIterator, __construct, NULL, ZEND_ACC_PRIVATE | ZEND_ACC_CTOR)
+	PHP_ME(MeCab_NodeIterator, __construct, arginfo_void, ZEND_ACC_PRIVATE | ZEND_ACC_CTOR)
 	/* Iterator implementations */
-	PHP_ME(MeCab_NodeIterator,  current,    NULL, ZEND_ACC_PUBLIC)
-	PHP_ME(MeCab_NodeIterator,  key,        NULL, ZEND_ACC_PUBLIC)
-	PHP_ME(MeCab_NodeIterator,  next,       NULL, ZEND_ACC_PUBLIC)
-	PHP_ME(MeCab_NodeIterator,  rewind,     NULL, ZEND_ACC_PUBLIC)
-	PHP_ME(MeCab_NodeIterator,  valid,      NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(MeCab_NodeIterator,  current,    arginfo_void, ZEND_ACC_PUBLIC)
+	PHP_ME(MeCab_NodeIterator,  key,        arginfo_void, ZEND_ACC_PUBLIC)
+	PHP_ME(MeCab_NodeIterator,  next,       arginfo_void, ZEND_ACC_PUBLIC)
+	PHP_ME(MeCab_NodeIterator,  rewind,     arginfo_void, ZEND_ACC_PUBLIC)
+	PHP_ME(MeCab_NodeIterator,  valid,      arginfo_void, ZEND_ACC_PUBLIC)
 	PHP_FE_END
 };
 /* }}} */
 
 /* {{{ MeCab\Path methods[] */
 #define PM_PATH_ME_MAPPING(methname, funcname) \
-	PHP_ME_MAPPING(methname, mecab_path_ ## funcname, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME_MAPPING(methname, mecab_path_ ## funcname, arginfo_void, ZEND_ACC_PUBLIC)
 
 static zend_function_entry mecab_path_methods[] = {
 	/* Constructor */
-	PHP_ME(MeCab_Path, __construct, NULL, ZEND_ACC_PRIVATE | ZEND_ACC_CTOR)
+	PHP_ME(MeCab_Path, __construct, arginfo_void, ZEND_ACC_PRIVATE | ZEND_ACC_CTOR)
 	/* Overloading implementations */
 	PHP_ME(MeCab_Path, __get,   arginfo_mecab__magic_getter, ZEND_ACC_PUBLIC)
 	PHP_ME(MeCab_Path, __isset, arginfo_mecab__magic_getter, ZEND_ACC_PUBLIC)
@@ -453,7 +453,7 @@ static zend_function_entry mecab_path_methods[] = {
 /* {{{ mecab_functions[] */
 
 static zend_function_entry mecab_functions[] = {
-	ZEND_NS_FE("MeCab", version, NULL)
+	ZEND_NS_FE("MeCab", version, arginfo_void)
 	ZEND_NS_FE("MeCab", split, arginfo_mecab_split)
 	PHP_FE_END
 };
