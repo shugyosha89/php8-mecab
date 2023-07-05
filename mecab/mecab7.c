@@ -2936,7 +2936,7 @@ PHP_METHOD(MeCab_Node, __isset)
 
 /* {{{ proto object MeCab_NodeIterator MeCab_Node::getIterator(void) */
 /**
- * object MeCab_NodeIterator MeCab_Node::getIterator(void)
+ * object MeCab_NodeIterator MeCab_Node::getIterator(void): Traversable
  *
  * [IteratorAggregate implementation]
  * Return the iterator object.
@@ -3040,7 +3040,7 @@ PHP_METHOD(MeCab_NodeIterator, __construct)
 
 /* {{{ object MeCab_Node MeCab_NodeIterator::current(void) */
 /**
- * object MeCab_Node MeCab_NodeIterator::current(void)
+ * object MeCab_Node MeCab_NodeIterator::current(void): mixed
  *
  * [Iterator implementation]
  * Return the current element.
@@ -3078,7 +3078,7 @@ PHP_METHOD(MeCab_NodeIterator, current)
 
 /* {{{ proto int MeCab_NodeIterator::key(void) */
 /**
- * int MeCab_Node::key(void)
+ * int MeCab_Node::key(void): mixed
  *
  * [Iterator implementation]
  * Return the key of the current element.
@@ -3110,7 +3110,7 @@ PHP_METHOD(MeCab_NodeIterator, key)
 
 /* {{{ proto void MeCab_NodeIterator::next(void) */
 /**
- * void MeCab_NodeIterator::next(void)
+ * void MeCab_NodeIterator::next(void): void
  *
  * [Iterator implementation]
  * Set the node pointer to the next.
@@ -3154,7 +3154,7 @@ PHP_METHOD(MeCab_NodeIterator, next)
 
 /* {{{ proto void MeCab_NodeIterator::rewind(void) */
 /**
- * void MeCab_NodeIterator::rewind(void)
+ * void MeCab_NodeIterator::rewind(void): void
  *
  * [Iterator implementation]
  * Set the node pointer to the beginning.
@@ -3179,7 +3179,7 @@ PHP_METHOD(MeCab_NodeIterator, rewind)
 
 /* {{{ proto bool MeCab_NodeIterator::valid(void) */
 /**
- * bool MeCab_NodeIterator::valid(void)
+ * bool MeCab_NodeIterator::valid(void): bool
  *
  * [Iterator implementation]
  * Check if there is a current element after calls to rewind() or next().
