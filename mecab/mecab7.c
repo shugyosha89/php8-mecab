@@ -2313,7 +2313,7 @@ PHP_FUNCTION(mecab_node_tostring)
 	fmt = mecab_format_node(mecab, node);
 	if (fmt == NULL) {
 		php_error_docref(NULL, E_WARNING, "%s", mecab_strerror(mecab));
-		RETURN_FALSE;
+		RETURN_STRING("");
 	}
 
 	/* set return value */
