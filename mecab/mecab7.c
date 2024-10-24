@@ -376,10 +376,10 @@ static zend_function_entry mecab_methods[] = {
 #define PM_NODE_ME_MAPPING(methname, funcname) \
 	PHP_ME_MAPPING(methname, mecab_node_ ## funcname, arginfo_void, ZEND_ACC_PUBLIC)
 
-#define PM_NODE_ME_MAPPING_RET_STRING(methname, funcname) \
-    PHP_ME_MAPPING(methname, mecab_node_ ## funcname, arginfo_void, ZEND_ACC_PUBLIC | ZEND_ACC_RETURN_TYPE_INFO(0, IS_STRING, 0))
-
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_getIterator, 0, 0, Traversable, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_toString, 0, 0, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
 static zend_function_entry mecab_node_methods[] = {
@@ -393,8 +393,8 @@ static zend_function_entry mecab_node_methods[] = {
 	PHP_ME(MeCab_Node, setTraverse, arginfo_mecab_node_settraverse, ZEND_ACC_PUBLIC)
 	/* Dumper */
 	PHP_ME_MAPPING(toArray, mecab_node_toarray, arginfo_mecab_node_toarray_m, ZEND_ACC_PUBLIC)
-	PM_NODE_ME_MAPPING_RET_STRING(toString, tostring)
-	PM_NODE_ME_MAPPING_RET_STRING(__toString, tostring)
+	PHP_ME_MAPPING(toString, mecab_node_tostring, arginfo_toString, ZEND_ACC_PUBLIC)
+	PHP_ME_MAPPING(__toString, mecab_node_tostring, arginfo_toString, ZEND_ACC_PUBLIC)
 	/* Getters */
 	PM_NODE_ME_MAPPING(getPrev,     prev)
 	PM_NODE_ME_MAPPING(getNext,     next)
