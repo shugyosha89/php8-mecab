@@ -1,10 +1,10 @@
-php-mecab: MeCab binding for PHP 8.1
-====================================
+php-mecab: MeCab binding for PHP 8
+==================================
 
 ABOUT
 -----
 
-I have updated this extension work without warnings and deprecation notices on PHP 8.1.
+I have updated this extension work without warnings and deprecation notices on PHP 8.1 & 8.2.
 
 INSTALL
 -------

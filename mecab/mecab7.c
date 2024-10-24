@@ -379,6 +379,9 @@ static zend_function_entry mecab_methods[] = {
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_getIterator, 0, 0, Traversable, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_toString, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
 static zend_function_entry mecab_node_methods[] = {
 	/* Constructor */
 	PHP_ME(MeCab_Node, __construct, arginfo_void, ZEND_ACC_PRIVATE | ZEND_ACC_CTOR)
@@ -390,8 +393,8 @@ static zend_function_entry mecab_node_methods[] = {
 	PHP_ME(MeCab_Node, setTraverse, arginfo_mecab_node_settraverse, ZEND_ACC_PUBLIC)
 	/* Dumper */
 	PHP_ME_MAPPING(toArray, mecab_node_toarray, arginfo_mecab_node_toarray_m, ZEND_ACC_PUBLIC)
-	PM_NODE_ME_MAPPING(toString, tostring)
-	PM_NODE_ME_MAPPING(__toString, tostring)
+	PHP_ME_MAPPING(toString, mecab_node_tostring, arginfo_toString, ZEND_ACC_PUBLIC)
+	PHP_ME_MAPPING(__toString, mecab_node_tostring, arginfo_toString, ZEND_ACC_PUBLIC)
 	/* Getters */
 	PM_NODE_ME_MAPPING(getPrev,     prev)
 	PM_NODE_ME_MAPPING(getNext,     next)
@@ -2313,7 +2316,7 @@ PHP_FUNCTION(mecab_node_tostring)
 	fmt = mecab_format_node(mecab, node);
 	if (fmt == NULL) {
 		php_error_docref(NULL, E_WARNING, "%s", mecab_strerror(mecab));
-		RETURN_FALSE;
+		RETURN_STRING("");
 	}
 
 	/* set return value */
